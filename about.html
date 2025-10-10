@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- About page -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="About the student and this Milestone #1 project." />
+  <link rel="stylesheet" href="styles.css" />
+  <title>About</title>
+
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="index.html">HTTP Evolution</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul id="menu" class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="topic1.html">HTTP/0.9 → 1.1</a></li>
+      <li><a href="topic2.html">HTTP/2 → HTTP/3</a></li>
+      <li><a href="concepts.html">Key Concepts</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>About the Student &amp; Project</h1>
+    <p>Hi, I’m <strong>Esteban Madrigal</strong>. I am currently a Sophomore studying IT and This site is my Milestone #1 project, demonstrating a consistent, simple design with semantic HTML and a single CSS file.</p>
+    <h2>Mini Resume</h2>
+    <ul>
+      <li>Program: Information technology</li>
+      <li>Skills: HTML, CSS , basic JavaScript</li>
+      <li>Interests: Web performance, networking, UX</li>
+    </ul>
+    <h2>Project Scope</h2>
+    <p>This milestone focuses on structure and style. Future milestones will expand the content depth and interactivity.</p>
+    <p>Contact: <a href="mailto:you@example.com"> emadriga@students.kennesaw.edu</a></p>
+  </main>
+  <footer class="site-footer">
+    <p>
+      <strong>Note:</strong> This website is a class project for IT 3203 Web Development.
+      
+    </p>
+    <p>&copy; 2025 Esteban Madrigal. Last updated 2025-10-08 17:51.</p>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+
+</body>
+</html>

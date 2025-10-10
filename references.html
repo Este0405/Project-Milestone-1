@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- References & Resources page -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="References and learning resources for HTTP history and HTTP/3 over QUIC." />
+  <link rel="stylesheet" href="styles.css" />
+  <title>References</title>
+
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="index.html">HTTP Evolution</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul id="menu" class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="topic1.html">HTTP/0.9 → 1.1</a></li>
+      <li><a href="topic2.html">HTTP/2 → HTTP/3</a></li>
+      <li><a href="concepts.html">Key Concepts</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>References &amp; Resources</h1>
+    <p>Selected sources used to build this site:</p>
+    <ul>
+      <li><a href="https://www.edocr.com/v/qezldpd2/jgzheng/Introduction-to-Web-Technology" target="_blank" rel="noopener">Zheng, Jack G. Introduction to Web Technology (KSU Lecture Notes)</a></li>
+      <li><a href="https://www.britannica.com/biography/Tim-Berners-Lee" target="_blank" rel="noopener">“Tim Berners-Lee” — Britannica</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">“HTTP” — Wikipedia</a></li>
+      <li><a href="https://http.dev/0.9#example" target="_blank" rel="noopener">“HTTP/0.9 Explained” — HTTP.dev</a></li>
+      <li><a href="https://www.britannica.com/technology/Hypertext" target="_blank" rel="noopener">“Hypertext” — Britannica</a></li>
+      <li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/" target="_blank" rel="noopener">“HTTP/2 vs HTTP/1.1” — Cloudflare Learning</a></li>
+      <li><a href="https://www.catchpoint.com/http3-vs-http2" target="_blank" rel="noopener">“HTTP/3 vs HTTP/2” — Catchpoint</a></li>
+      <li><a href="https://http.dev/2" target="_blank" rel="noopener">“HTTP/2 Overview” — HTTP.dev</a></li>
+      <li><a href="https://www.britannica.com/topic/Web-application" target="_blank" rel="noopener">“Web Application” — Britannica</a></li>
+      <li><a href="https://www.chromium.org/quic/" target="_blank" rel="noopener">Chromium Project — QUIC</a></li>
+    </ul>
+    <h2>Primary RFCs</h2>
+    <table>
+      <thead><tr><th>#</th><th>Title</th><th>Type</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>HTTP/3</td><td>RFC</td><td><a href="https://www.rfc-editor.org/rfc/rfc9114" target="_blank" rel="noopener">RFC 9114</a></td></tr>
+        <tr><td>2</td><td>QUIC Transport</td><td>RFC</td><td><a href="https://www.rfc-editor.org/rfc/rfc9000" target="_blank" rel="noopener">RFC 9000</a></td></tr>
+      </tbody>
+    </table>
+  </main>
+  <footer class="site-footer">
+    <p>
+      <strong>Note:</strong> This website is a class project for IT 3203 Web Development.
+    </p>
+    <p>&copy; 2025 Esteban Madrigal. Last updated 2025-10-08 17:51.</p>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+
+</body>
+</html>

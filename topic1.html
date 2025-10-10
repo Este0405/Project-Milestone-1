@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Topic Page 1 | HTTP/0.9 → 1.1 -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Origins of HTTP, Tim Berners-Lee, HTTP/0.9 to HTTP/1.1 improvements." />
+  <link rel="stylesheet" href="styles.css" />
+  <title>HTTP/0.9 → 1.1</title>
+
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="index.html">HTTP Evolution</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul id="menu" class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="topic1.html">HTTP/0.9 → 1.1</a></li>
+      <li><a href="topic2.html">HTTP/2 → HTTP/3</a></li>
+      <li><a href="concepts.html">Key Concepts</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>HTTP/0.9 → HTTP/1.1: Origins &amp; Growth</h1>
+    <p>Sir Tim Berners-Lee created HTTP, HTML, the first web server, and the first web browser. HTTP/0.9 started as a minimal, text-only protocol. By 1996, HTTP/1.0 added headers and status codes to improve communication, though performance suffered due to one request per connection as pages became more complex.</p>
+    <h2>HTTP/1.1 (1997)</h2>
+    <ul>
+      <li>Persistent connections enable multiple requests over the same TCP connection.</li>
+      <li>Pipelining allows sending multiple requests before responses (limited adoption in practice).</li>
+      <li>Improved caching rules and required Host headers (virtual hosting on shared IPs).</li>
+    </ul>
+    <p>HTTP/1.1 became widely deployed and is still supported today, laying the foundation for future versions and the growth of the web.</p>
+  </main>
+  <footer class="site-footer">
+    <p>
+      <strong>Note:</strong> This website is a class project for IT 3203 Web Development.
+    </p>
+    <p>&copy; 2025 Esteban Madrigal. Last updated 2025-10-08 17:51.</p>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+
+</body>
+</html>

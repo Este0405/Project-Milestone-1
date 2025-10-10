@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- IT 3203 – Milestone #1 | index.html -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Overview of how HTTP evolved and why HTTP/3 over QUIC matters." />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Home • HTTP Evolution</title>
+
+</head>
+<body>
+  <header id="hero" class="hero">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="index.html">HTTP Evolution</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul id="menu" class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="topic1.html">HTTP/0.9 → 1.1</a></li>
+      <li><a href="topic2.html">HTTP/2 → HTTP/3</a></li>
+      <li><a href="concepts.html">Key Concepts</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+    <div class="hero-inner">
+      <img src="assets/banner.svg" class="hero-image" alt="Abstract network banner for HTTP/QUIC" />
+      <div>
+        <h1>HTTP: From Documents to QUIC</h1>
+        <p class="lede">How the web loads “instantly” when you paste a link — and why HTTP/3 + QUIC is the new engine of the Internet.</p>
+        <ul class="key-terms">
+          <li>Request / Response</li><li>Statelessness</li><li>Persistent Connections</li>
+          <li>Multiplexing</li><li>Head-of-Line Blocking</li><li>QUIC</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main class="content grid">
+    <article>
+      <h2>Abstract</h2>
+      <p>HTTP powers the modern web by allowing browsers and servers to exchange information efficiently. Early HTTP ran over TCP and revealed performance limits as sites grew more complex. HTTP/3, built on QUIC over UDP, tackles those limits with faster handshakes, stream isolation, and baked-in security — especially helpful on mobile and lossy networks.</p>
+      <h3>Table of Contents</h3>
+      <ol>
+        <li><a href="topic1.html">HTTP/0.9 → 1.1: Origins &amp; Growth</a></li>
+        <li><a href="topic2.html">HTTP/2 → HTTP/3: Modern Performance</a></li>
+        <li><a href="concepts.html">Key Concepts</a></li>
+        <li><a href="references.html">References &amp; Learning Resources</a></li>
+        <li><a href="about.html">About this Project</a></li>
+      </ol>
+    </article>
+    <aside class="callout">
+      <h2>At a Glance</h2>
+      <table>
+        <caption>HTTP Versions Compared</caption>
+        <thead>
+          <tr><th>Version</th><th>Year</th><th>Transport</th><th>Highlights</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>HTTP/0.9</td><td>1990</td><td>TCP</td><td>Text-only responses</td></tr>
+          <tr><td>HTTP/1.0</td><td>1996</td><td>TCP</td><td>Headers &amp; status codes</td></tr>
+          <tr><td>HTTP/1.1</td><td>1997</td><td>TCP</td><td>Persistent connections, caching</td></tr>
+          <tr><td>HTTP/2</td><td>2015</td><td>TCP</td><td>Multiplexing, binary framing</td></tr>
+          <tr><td>HTTP/3</td><td>2020</td><td>QUIC (UDP)</td><td>Faster, secure, stream isolation</td></tr>
+        </tbody>
+      </table>
+    </aside>
+  </main>
+  <footer class="site-footer">
+    <p>
+      <strong>Note:</strong> This website is a class project for IT 3203 Web Development.
+    </p>
+    <p>&copy; 2025 Esteban Madrigal. Last updated 2025-10-08 17:51.</p>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Topic Page 2 | HTTP/2 → HTTP/3 + QUIC -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="From SPDY to HTTP/2 and to HTTP/3 over QUIC: performance and reliability." />
+  <link rel="stylesheet" href="styles.css" />
+  <title>HTTP/2 → HTTP/3</title>
+
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="index.html">HTTP Evolution</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul id="menu" class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="topic1.html">HTTP/0.9 → 1.1</a></li>
+      <li><a href="topic2.html">HTTP/2 → HTTP/3</a></li>
+      <li><a href="concepts.html">Key Concepts</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>HTTP/2 → HTTP/3: Modern Performance</h1>
+    <h2>From SPDY to HTTP/2 (2015)</h2>
+    <p>Google’s SPDY (2009) inspired HTTP/2, which introduced binary framing, multiplexing, header compression, prioritization, and server push. Binary framing breaks messages into frames so multiple resources can be fetched concurrently on a single TCP connection.</p>
+    <h2>HTTP/3 + QUIC (2020)</h2>
+    <ul>
+      <li><strong>QUIC over UDP:</strong> Faster handshakes, integrated TLS 1.3, and better mobility across networks.</li>
+      <li><strong>No Transport HOL Blocking:</strong> Loss on one stream doesn’t stall others thanks to stream isolation.</li>
+      <li><strong>Real-world wins:</strong> More resilient on lossy/mobile networks; widely supported by major browsers and platforms.</li>
+    </ul>
+    <aside class="callout">
+      <h3>What is QUIC (Simple temrs)?</h3>
+      <p>Think of TCP like sending certified mail — reliable but slow because each step needs a signature. QUIC is more like secure messaging — it’s encrypted by default and recovers from hiccups quickly, so the conversation keeps flowing.</p>
+    </aside>
+    <p>Adoption continues to grow. Some legacy firewalls/servers lag behind and UDP debugging can be harder, but the trajectory is toward HTTP/3 by default.</p>
+  </main>
+  <footer class="site-footer">
+    <p>
+      <strong>Note:</strong> This website is a class project for IT 3203 Web Development.
+    </p>
+    <p>&copy; 2025 Esteban Madrigal. Last updated 2025-10-08 17:51.</p>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+
+</body>
+</html>
