@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Self‑assessment quiz on HTTP evolution and HTTP/3 over QUIC." />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Quiz • HTTP Evolution</title>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="index.html">HTTP Evolution</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul id="menu" class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="topic1.html">HTTP/0.9 → 1.1</a></li>
+      <li><a href="topic2.html">HTTP/2 → HTTP/3</a></li>
+      <li><a href="concepts.html">Key Concepts</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="about.html">About</a></li>
+    
+      <li><a href="quiz.html" aria-current="page">Quiz</a></li>
+    </ul>
+  </nav>
+ 
+  <main class="content">
+    <h1>Self‑Assessment Quiz</h1>
+    <p class="lede">Test your understanding of HTTP’s evolution and why HTTP/3 over QUIC improves real‑world performance.</p>
+ 
+    <form id="quiz" class="quiz-card" novalidate>
+      <section class="q" data-points="20" id="q1">
+        <h3>1) Fill in the blank (20 pts)</h3>
+        <p>HTTP/3 runs over <strong>____</strong>, using the QUIC transport.</p>
+        <input type="text" name="q1" placeholder="Your answer (hint: not TCP)" />
+        <div class="result" aria-live="polite"></div>
+      </section>
+ 
+      <section class="q" data-points="20" id="q2">
+        <h3>2) Multiple Choice (20 pts)</h3>
+        <p>Which RFC defines HTTP/3 (as listed on the References page)?</p>
+        <div class="answers">
+          <label><input type="radio" name="q2" value="2616"> RFC 2616 (HTTP/1.1)</label>
+          <label><input type="radio" name="q2" value="7540"> RFC 7540 (HTTP/2)</label>
+          <label><input type="radio" name="q2" value="9114"> RFC 9114 (HTTP/3)</label>
+        </div>
+        <div class="result" aria-live="polite"></div>
+      </section>
+ 
+      <section class="q" data-points="20" id="q3">
+        <h3>3) Multiple Choice (20 pts)</h3>
+        <p>QUIC’s independent streams primarily mitigate which issue?</p>
+        <div class="answers">
+          <label><input type="radio" name="q3" value="dns"> DNS cache poisoning</label>
+          <label><input type="radio" name="q3" value="hol"> Transport head‑of‑line blocking</label>
+          <label><input type="radio" name="q3" value="csrf"> CSRF attacks</label>
+        </div>
+        <div class="result" aria-live="polite"></div>
+      </section>
+ 
+      <section class="q" data-points="20" id="q4">
+        <h3>4) Multiple Choice (20 pts)</h3>
+        <p>Which of the following was a limitation of HTTP/1.1?</p>
+        <div class="answers">
+          <label><input type="radio" name="q4" value="one"> One request per TCP connection by default</label>
+          <label><input type="radio" name="q4" value="binary"> Binary framing</label>
+          <label><input type="radio" name="q4" value="isolation"> Stream isolation</label>
+        </div>
+        <div class="result" aria-live="polite"></div>
+      </section>
+ 
+      <section class="q" data-points="20" id="q5">
+        <h3>5) Multi‑select (20 pts)</h3>
+        <p>Select all features associated with HTTP/3 + QUIC:</p>
+        <div class="answers">
+          <label><input type="checkbox" name="q5" value="tls13"> Integrated TLS 1.3</label>
+          <label><input type="checkbox" name="q5" value="migrate"> Connection migration via Connection IDs</label>
+          <label><input type="checkbox" name="q5" value="streams"> Independent streams (no transport HOL)</label>
+          <label><input type="checkbox" name="q5" value="tcp"> Requires TCP</label>
+        </div>
+        <div class="result" aria-live="polite"></div>
+      </section>
+ 
+      <div class="actions">
+        <button type="submit">Submit Quiz</button>
+        <button type="button" id="resetBtn">Reset</button>
+      </div>
+ 
+      <section id="summary" class="scorebox" style="display:none" aria-live="polite"></section>
+    </form>
+  </main>
+ 
+  <footer class="site-footer">
+    <p>&copy; 2025 Esteban Madrigal | IT 3203 Milestone #2</p>
+  </footer>
+ 
+  <script>
+    const btn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+ 
+    const form = document.getElementById('quiz');
+    const summary = document.getElementById('summary');
+    const resetBtn = document.getElementById('resetBtn');
+    const ANSWERS = { q1:'udp', q2:'9114', q3:'hol', q4:'one', q5:['tls13','migrate','streams'] };
+ 
+    function mark(section, ok, message){
+      const div = section.querySelector('.result');
+      div.className = 'result ' + (ok ? 'correct' : 'incorrect');
+      div.textContent = (ok ? 'Correct: ' : 'Incorrect: ') + message;
+    }
+ 
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let score = 0;
+ 
+      const ok1 = form.q1.value.trim().toLowerCase() === ANSWERS.q1; if (ok1) score+=20;
+      mark(document.getElementById('q1'), ok1, 'HTTP/3 runs over UDP via QUIC.');
+ 
+      const ok2 = form.q2.value === ANSWERS.q2; if (ok2) score+=20;
+      mark(document.getElementById('q2'), ok2, 'RFC 9114 defines HTTP/3.');
+ 
+      const ok3 = form.q3.value === ANSWERS.q3; if (ok3) score+=20;
+      mark(document.getElementById('q3'), ok3, 'QUIC mitigates transport HOL blocking via stream isolation.');
+ 
+      const ok4 = form.q4.value === ANSWERS.q4; if (ok4) score+=20;
+      mark(document.getElementById('q4'), ok4, 'HTTP/1.1 commonly handled one request per connection by default.');
+ 
+      const chosen = Array.from(document.querySelectorAll('input[name="q5"]:checked')).map(x=>x.value).sort();
+      const ok5 = JSON.stringify(chosen) === JSON.stringify(ANSWERS.q5.slice().sort()); if (ok5) score+=20;
+      mark(document.getElementById('q5'), ok5, 'Correct: TLS 1.3, connection migration, independent streams (not TCP).');
+ 
+      const passed = score >= 70;
+      summary.style.display = 'block';
+      summary.className = 'scorebox ' + (passed ? 'pass' : 'fail');
+      summary.textContent = (passed ? 'Pass' : 'Fail') + ' — Total Score: ' + score + '/100';
+    });
+ 
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      summary.style.display = 'none';
+      document.querySelectorAll('.result').forEach(r => { r.textContent = ''; r.className = 'result'; });
+    });
+  </script>
+</body>
+</html>

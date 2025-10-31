@@ -16,18 +16,39 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html, body { height: 100%; overflow-x: hidden; }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 { line-height: 1.2; }
 h1 { font-size: 1.9rem; }
-.lede { color: var(--muted); max-width: 60ch; }
+.lede { 
+  color: var(--muted); 
+  max-width: 60ch; 
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.key-terms {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  overflow-wrap: break-word;
+}
+.key-terms li {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
 
 .site-nav {
   display: flex;
@@ -39,6 +60,8 @@ h1 { font-size: 1.9rem; }
   position: sticky;
   top: 0;
   z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
 }
 .site-nav .brand { font-weight: 700; text-decoration: none; color: var(--text); }
 .menu-toggle {
@@ -72,16 +95,40 @@ a[target="_blank"]::after {
 }
 
 #hero { background: linear-gradient(180deg, var(--bg-alt), var(--bg)); border-bottom: 1px solid var(--border); }
-.hero .hero-inner { max-width: 1100px; margin: 0 auto; padding: 1rem; display: flex; align-items: center; gap: 1.25rem; }
-.hero-image { width: 220px; height: auto; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+.hero .hero-inner { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 1rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 1.25rem; 
+  width: 100%;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.hero .hero-inner > div {
+  min-width: 0;
+  flex: 1;
+}
+.hero-image { 
+  width: 220px; 
+  height: auto; 
+  border-radius: var(--radius); 
+  border: 1px solid var(--border); 
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+  flex-shrink: 0;
+}
 
 .content.grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 1rem;
-  padding: 1rem;
-  max-width: 1100px;
+  grid-template-columns: minmax(0, 1fr) minmax(400px, 500px);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 .content {
   background: var(--card);
@@ -90,15 +137,48 @@ a[target="_blank"]::after {
   padding: 1rem 1.25rem;
 }
 
-.callout, article {
+article {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1rem;
+  padding: 1rem 1.25rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  min-width: 0;
 }
 
-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
-th, td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); text-align: left; }
+p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.callout {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  margin-top: 0.5rem; 
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+th, td { 
+  padding: 0.6rem 0.8rem; 
+  border-bottom: 1px solid var(--border); 
+  text-align: left; 
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  vertical-align: top;
+  width: 25%;  /* Evenly spaced columns */
+}
 thead th { background: #f1f5f9; }
 
 .site-footer {
@@ -111,9 +191,25 @@ thead th { background: #f1f5f9; }
 }
 
 @media (max-width: 860px) {
-  .content.grid { grid-template-columns: 1fr; }
-  .hero .hero-inner { flex-direction: column; text-align: center; }
+  .content.grid { 
+    grid-template-columns: 1fr; 
+    padding: 1rem 0.75rem;
+  }
+  .hero .hero-inner { 
+    flex-direction: column; 
+    text-align: center; 
+    padding: 1rem 0.75rem;
+  }
+  .hero-image {
+    width: 180px;
+    max-width: 100%;
+  }
   .menu { display: none; }
   .menu.open { display: flex; flex-direction: column; width: 100%; }
   .menu-toggle { display: inline-block; }
+  h1 { font-size: 1.5rem; }
+  .lede { max-width: 100%; }
+  article, .callout {
+    padding: 1rem 0.75rem;
+  }
 }
